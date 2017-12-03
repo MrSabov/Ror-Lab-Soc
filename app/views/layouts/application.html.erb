@@ -6,11 +6,36 @@
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  <style>
+    body {
+    background-color: #feec82; }
+
+    .container  {
+      background-color: #EFEFEF;
+      padding: 0 0 0 0
+    }
+
+    .footer {
+      background-color: #2E2F30;
+      color: #EFEFEF;
+      margin-bottom: 0;
+      text-align: center;
+      width: 100%;
+      height: 60px;
+    }
+      p {
+        padding-top: 20px;
+      }
+
+
+  </style>
+
 </head>
 
 <body>
 <div class="container">
-  <nav class="navbar navbar-light bg-faded">
+  <nav class="navbar navbar-light bg-dark">
     <ul class="nav navbar-nav">
         <a class="nav-link" href="<%= root_path %>">Все статьи</a>
       </li>
@@ -36,10 +61,10 @@
   </div>
 
   <div class="row">
-    <div class="col-md-9">
+    <div class="col-md-10">
       <%= yield %>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-2">
       <%= render 'shared/submenu' %>
 
       <div class="tag_cloud">
@@ -49,6 +74,10 @@
         <% end %>
       </div>
     </div>
+  </div>
+
+  <div class="footer">
+    <p> All rights reserved 2017</p>
   </div>
 
 </div>

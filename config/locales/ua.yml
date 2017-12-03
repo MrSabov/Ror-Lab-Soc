@@ -17,3 +17,14 @@
     form:
      submit:
       '%{action} пост'
+  categories:
+      index:
+        title: 'Категогрії'
+      new:
+        title: 'Нова категорія'
+      edit:
+        title: 'Редагувати категорію'
+      form:
+       submit:
+        '%{action} категорії'
+

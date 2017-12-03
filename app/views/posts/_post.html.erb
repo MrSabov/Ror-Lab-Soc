@@ -10,7 +10,7 @@
   </section>
 
   <section class="post-summary clearfix">
-    <%= image_tag post.image.url(:thumb), class: 'img-thumbnail thumb' if post.image? %>
+    <%= image_tag post.image.url(:large), class: 'img-show' if post.image? %>
     <%= post.summary %>
   </section>
 

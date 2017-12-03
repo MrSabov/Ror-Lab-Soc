@@ -1,7 +1,5 @@
-class Category < ApplicationRecord
-  has_many :posts
+ class Category < ApplicationRecord
 
   validates :name, presence: true
 
-  has_ancestry
-end
+ end
