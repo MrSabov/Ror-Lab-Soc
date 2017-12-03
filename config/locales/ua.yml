@@ -1,0 +1,19 @@
+ ua:
+  common:
+    errors: 'При заполненні форми виникли помилки'
+    back: 'Назад'
+    create: 'Створити'
+    edit: 'Редагувати'
+  will_paginate:
+    previous_label: '&larr; Туда'
+    next_label: 'Сюда &rarr;'
+  posts:
+    index:
+      title: 'Пости'
+    new:
+      title: 'Новий пост'
+    edit:
+      title: 'Редагування поста'
+    form:
+     submit:
+      '%{action} пост'
