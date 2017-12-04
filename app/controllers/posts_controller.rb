@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
 
-  before_action :set_post, only: [ :show, :edit, :update, :destroy ]
+  before_action :set_post, only: [ :show, :edit, :update]
 
   def index
     @posts = Post.paginate(page: params[:page], per_page: 5)
@@ -36,17 +36,21 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    @post = Post.find(params[:id])
     @post.destroy
-    redirect_to posts_path, success: 'Статья успешно удалена'
+    redirect_to posts_path, success: 'Пост успішно видалено'
   end
+
+
 
   private
 
-  def set_post
-    @post = Post.find(params[:id])
-  end
+    def set_post
+      @post = Post.find(params[:id])
+    end
 
-  def post_params
-    params.require(:post).permit(:title, :summary, :body, :image, :all_tags, :category_id)
-  end
+    def post_params
+      params.require(:post).permit(:title, :summary, :body, :image, :all_tags, :category_id)
+    end
+
 end

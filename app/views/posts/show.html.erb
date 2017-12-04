@@ -17,8 +17,8 @@
   </section>
 
   <section class="post-body">
-    <%= image_tag @post.image.url(:large), class: 'img-show' if @post.image? %>
     <%= @post.body.html_safe %>
+    <%= image_tag @post.image.url(:large), class: 'img-show' if @post.image? %>
   </section>
 </article>
 
