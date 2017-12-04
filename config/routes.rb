@@ -4,7 +4,11 @@ Rails.application.routes.draw do
     resources :posts
     resources :pictures
     resources :tags, only: [:show]
-    resources :categories
+    resources :categories, only: [:show]
+
+  namespace :admin do
+    resources :categories, except: [:show]
+  end
 
 end
 
