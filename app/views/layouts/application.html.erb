@@ -28,6 +28,10 @@
         padding-top: 20px;
       }
 
+    .nav-link  a {
+      display: inline;
+    }
+    
 
 
   </style>
@@ -36,25 +40,53 @@
 
 <body>
 <div class="container">
-  <nav class="navbar navbar-light bg-dark">
-    <ul class="nav navbar-nav">
-        <a class="nav-link" href="<%= root_path %>">Все статьи</a>
-      </li>
-      <%# Category.order(:name).roots.each do |category| %>
-          <li class="nav-item <%#= 'active' if current_page?(category_path(category)) %>">
-            <%#= link_to category.name, category, class: 'nav-link' %>
-          </li>
-      <%# end %>
-    </ul>
-    <%= link_to 'Новая статья', new_post_path, class: 'btn btn-outline-primary pull-xs-right' %>
+
+  <nav class="navbar navbar-expand-lg navbar-width bg-dark ">
+    <a class="navbar-brand" href="<%= root_path %>">Всі пости</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" style="display:flex; justify-content: flex-end;" id="navbarNavAltMarkup">
+
+      <ul class="navbar-nav">
+        <% if user_signed_in? %>
+            <li class="nav-item">
+              <%=link_to "Выход", destroy_user_session_path, method:  :delete, class: "nav-link" %>
+            </li>
+        <% else %>
+            <li class="nav-item">
+              <%= link_to "Вход", new_user_session_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Регистрация", new_user_registration_path, class: "nav-link" %>
+            </li>
+        <% end %>
+      </ul>
+    </div>
   </nav>
-</div>
+
+  <!--<nav class="navbar navbar-width bg-dark">-->
+  <!--<ul class="nav navbar-nav">-->
+
+  <!--</li>-->
+  <!--&lt;!&ndash;<%# Category.order(:name).roots.each do |category| %>&ndash;&gt;-->
+          <!--&lt;!&ndash;<li class="nav-item <%#= 'active' if current_page?(category_path(category)) %>">&ndash;&gt;-->
+            <!--&lt;!&ndash;<%#= link_to category.name, category, class: 'nav-link' %>&ndash;&gt;-->
+          <!--&lt;!&ndash;</li>&ndash;&gt;-->
+      <!--&lt;!&ndash;<%# end %>&ndash;&gt;-->
+    <!--</ul>-->
+    <!--<%#= link_to 'Новая статья', new_post_path, class: 'btn btn-outline-primary pull-xs-right' %>-->
+  <!--</nav>-->
+<!--</div>-->
+
+
 
 <div class="container main">
   <div class="row">
     <div class="col-md-12">
       <% flash.each do |name, message| %>
-          <div class="alert alert-<%= name %>">
+          <div class="alert <%= bootstrap_class_for(name) %>">
+            <button class="close" data-dismiss="alert">&times;</button>
             <%= message %>
           </div>
       <% end %>
@@ -82,6 +114,7 @@
     <p> All rights reserved 2017</p>
   </div>
 
-</div>
+  </div>
+  </div>
 </body>
 </html>
