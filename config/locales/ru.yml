@@ -9,16 +9,26 @@ ru:
     next_label: 'Сюда &rarr;'
   posts:
     index:
-      title: 'Статьи'
+      title: 'Посты'
+      allpos: 'Все посты'
+      newbtn: 'Новый пост'
+      newbtnc: 'Новая категория'
+  shared:
+    submenu:
+      name: 'Все категории'
+  layouts:
+    application:
+      tags: 'Все теги'
+      logo: 'Все посты'
   admin:
     posts:
       new:
-        title: 'Новая статья'
+        title: 'Новый пост'
       edit:
-        title: 'Редактирование статьи'
+        title: 'Редактирование поста'
       form:
         submit:
-          '%{action} статью'
+          '%{action} пост'
     categories:
       index:
         title: 'Категории'

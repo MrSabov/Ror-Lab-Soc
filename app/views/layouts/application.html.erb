@@ -37,7 +37,7 @@
 <div class="container">
 
   <nav class="navbar navbar-expand-lg navbar-width bg-dark ">
-    <a class="navbar-brand" href="<%= root_path %>">Всі пости</a>
+    <a class="navbar-brand" href="<%= root_path %>"><%= t('.logo') %></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -90,7 +90,7 @@
     </div>
     <div class="col-md-2">
       <div class="tag_cloud">
-        <h2>Теги</h2>
+        <h2><%= t('.tags') %></h2>
         <% tag_cloud(Tag.counts, %w{tag1 tag2 tag3 tag4 tag5}) do |tag, css_class| %>
             <%= link_to tag.name, tag_path(tag.name), class: css_class %>
         <% end %>

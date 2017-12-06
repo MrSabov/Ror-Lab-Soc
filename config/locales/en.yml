@@ -41,9 +41,16 @@ en:
   posts:
     index:
       title: 'Posts'
+      allpos: 'All posts'
+      newbtn: 'New post'
+      newbtnc: 'New category'
   shared:
     submenu:
       name: 'All Categories'
+  layouts:
+      application:
+        tags: 'All Tags'
+        logo: 'All posts'
   admin:
     posts:
       new:
