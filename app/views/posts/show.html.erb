@@ -9,7 +9,7 @@
           |
           <%= link_to @post.category.name, @post.category %>
       <% end %>
-      <% if user_signed_in? %>
+      <% if user_signed_in? && current_user.admin? %>
         |
         <%= link_to 'Изменить', edit_admin_post_path(@post) %>
         |
@@ -22,6 +22,11 @@
     <%= @post.body.html_safe %>
     <%= image_tag @post.image.url(:large), class: 'img-show' if @post.image? %>
   </section>
+
+  <section class="footer-summary">
+    <%= raw @post.tags.map(&:name).map{ |t| link_to t, tag_path(t), class: 'tag tag-primary' }.join(' ') %>
+  </section>
+
 </article>
 
 <%= render 'disqus' %>

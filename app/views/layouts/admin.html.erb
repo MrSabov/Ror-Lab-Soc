@@ -9,7 +9,7 @@
 
   <style>
     body {
-    background-color: #9da8c0; }
+      background-color: #9da8c0; }
 
     .container  {
       background-color: #EFEFEF;
@@ -24,9 +24,14 @@
       width: 100%;
       height: 60px;
     }
-      p {
-        padding-top: 20px;
-      }
+    p {
+      padding-top: 20px;
+    }
+
+    .nav-link  a {
+      display: inline;
+    }
+
 
 
   </style>
@@ -37,7 +42,7 @@
 <div class="container">
 
   <nav class="navbar navbar-expand-lg navbar-width bg-dark ">
-    <a class="navbar-brand" href="<%= root_path %>">Всі пости</a>
+    <a class="navbar-brand" href="<%= root_path %>">Admin panel</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -57,52 +62,46 @@
               <%= link_to "Регистрация", new_user_registration_path, class: "nav-link" %>
             </li>
         <% end %>
-        <li class="nav-item <%= " active" if I18n.locale == :ru %>">
-          <%= link_to "Рус", {locale: :ru}, class: "nav-link" %>
-        </li>
-        <li class="nav-item <%= " active" if I18n.locale == :en %>">
-          <%= link_to "Ang", {locale: :en}, class: "nav-link" %>
-        </li>
       </ul>
     </div>
   </nav>
 
-    <!---->
+  <!---->
 
-<div class="container main">
-  <div class="row">
-    <div class="col-md-12">
-      <% flash.each do |name, message| %>
-          <div class="alert <%= bootstrap_class_for(name) %>">
-            <button class="close" data-dismiss="alert">&times;</button>
-            <%= message %>
-          </div>
-      <% end %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-3">
-      <%= render 'shared/submenu' %>
-    </div>
-    <div class="col-md-7">
-      <%= yield %>
-    </div>
-    <div class="col-md-2">
-      <div class="tag_cloud">
-        <h2>Теги</h2>
-        <% tag_cloud(Tag.counts, %w{tag1 tag2 tag3 tag4 tag5}) do |tag, css_class| %>
-            <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+  <div class="container main">
+    <div class="row">
+      <div class="col-md-12">
+        <% flash.each do |name, message| %>
+            <div class="alert <%= bootstrap_class_for(name) %>">
+              <button class="close" data-dismiss="alert">&times;</button>
+              <%= message %>
+            </div>
         <% end %>
       </div>
     </div>
-  </div>
 
-  <div class="footer">
-    <p> All rights reserved 2017</p>
-  </div>
+    <div class="row">
+      <div class="col-md-3">
+        <%= render 'shared/submenu' %>
+      </div>
+      <div class="col-md-7">
+        <%= yield %>
+      </div>
+      <div class="col-md-2">
+        <div class="tag_cloud">
+          <h2>Теги</h2>
+          <% tag_cloud(Tag.counts, %w{tag1 tag2 tag3 tag4 tag5}) do |tag, css_class| %>
+              <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p> All rights reserved 2017</p>
+    </div>
 
   </div>
-  </div>
+</div>
 </body>
 </html>

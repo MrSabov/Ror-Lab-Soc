@@ -1,11 +1,21 @@
+
+<style>
+  .linec {
+    margin-bottom: 5px;
+    margin: 1px 1em 1px 1em;
+    border-bottom: 1px solid lightgrey; }
+</style>
+
 <div class="submenu">
-  <h2>Категории</h2>
+  <h2><%= t('.name') %></h2>
   <ul class="nav nav-pills nav-stacked">
-    <% Category.roots.each do |category| %>
-        <li class="nav-item">
-          <%= link_to category.name, category, class: "nav-link #{'active' if current_page?(category_path(category)) || @post.present? && @post.category == category }" %>
-          <%= render 'shared/submenu_categories', categories: category.root.descendants.arrange %>
-        </li>
-    <% end %>
+      <% Category.roots.each do |category| %>
+          <li class="nav-item">
+            <div class="linec">
+              <%= link_to category.name, category, class: "nav-link #{'active' if current_page?(category_path(category)) || @post.present? && @post.category == category }" %>
+              <%= render 'shared/submenu_categories', categories: category.root.descendants.arrange %>
+            </div>
+          </li>
+      <% end %>
   </ul>
 </div>

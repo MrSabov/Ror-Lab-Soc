@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
 
+  before_action :authenticate_user!, only: :show
   before_action :set_post, only: :show
 
   def index
