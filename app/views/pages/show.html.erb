@@ -1,0 +1,26 @@
+
+<style>
+
+  img.img-as {
+    width: 200px;
+    height: 200px;
+  }
+
+  .img-as {
+    float: left;
+    padding: 10px 10px 15px 0;
+  }
+
+</style>
+
+
+<div class="img-as">
+<%= image_tag @page.avatar.url(:avatar), class: 'img-as' if @page.avatar? %>
+</div>
+
+<h1><%= @page.name %> <%= @page.surname %></h1>
+<p>Age: <%= @page.age %></p>
+
+<%= link_to 'edit', edit_page_path(@page) %>
+|
+<%= link_to 'delete', page_path(@page), method: :delete, data: {comfirm: 'You sure??'} %>
