@@ -1,0 +1,33 @@
+<h1><%= @forum.title %></h1>
+
+<style>
+  .show {
+    margin-bottom: 1em;
+    padding: 1em 0;
+    border-bottom: 1px solid lightgrey;
+  }
+
+  img.show {
+    width: 600px;
+    height: 400px;
+  }
+
+</style>
+
+<small class="sml">
+  <time><%= @forum.created_at.to_date.strftime("%d %B, %Y") %></time>
+  <% if user_signed_in? && (current_user != nil and current_user.id == @forum.user_id  || current_user.admin?) %>
+    <%= link_to 'Изменить', edit_forum_path(@forum) %>
+    |
+    <%= link_to 'Удалить', forum_path(@forum), method: :delete, data: { confirm: 'Вы уверены?' } %>
+  <% end %>
+</small>
+
+<div class="show">
+<p><%= @forum.body %></p>
+<%= image_tag @forum.image.url(:large), class: 'show' if @forum.image? %>
+</div>
+
+<%= render 'disqus' %>
+
+
