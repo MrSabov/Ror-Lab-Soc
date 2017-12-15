@@ -1,5 +1,4 @@
 # Русский перевод для https://github.com/plataformatec/devise/tree/v3.5.6
-# Другие переводы на http://github.com/plataformatec/devise/wiki/I18n
 
 ru:
   devise:
@@ -53,13 +52,11 @@ ru:
       unlocked: "Ваша учётная запись разблокирована. Теперь вы вошли в систему."
   errors:
     messages:
-      already_confirmed: "уже подтверждена. Пожалуйста, попробуйте войти в систему"
-      confirmation_period_expired: "должен быть подтвержден в течении %{period}, пожалуйста, запросите подтверждение ещё раз"
-      expired: "устарела. Пожалуйста, запросите новую"
-      not_found: "не найдена"
-      not_locked: "не заблокирована"
+      already_confirmed: "was already confirmed, please try signing in"
+      confirmation_period_expired: "needs to be confirmed within %{period}, please request a new one"
+      expired: "has expired, please request a new one"
+      not_found: "not found"
+      not_locked: "was not locked"
       not_saved:
-        one: "%{resource}: сохранение не удалось из-за %{count} ошибки"
-        few: "%{resource}: сохранение не удалось из-за %{count} ошибок"
-        many: "%{resource}: сохранение не удалось из-за %{count} ошибок"
-        other: "%{resource}: сохранение не удалось из-за %{count} ошибки"
+        one: "1 error prohibited this %{resource} from being saved:"
+        other: "%{count} errors prohibited this %{resource} from being saved:"

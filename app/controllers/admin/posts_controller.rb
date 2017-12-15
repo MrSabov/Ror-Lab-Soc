@@ -1,4 +1,5 @@
 class Admin::PostsController < Admin::AdminController
+
   before_action :set_post, only: [:edit, :update]
 
 
@@ -16,6 +17,8 @@ class Admin::PostsController < Admin::AdminController
       render :new
     end
   end
+
+
 
   def edit
   end
@@ -39,12 +42,12 @@ class Admin::PostsController < Admin::AdminController
 
   private
 
-    def set_post
-      @post = Post.find(params[:id])
-    end
+  def set_post
+    @post = Post.find(params[:id])
+  end
 
-    def post_params
-      params.require(:post).permit(:title, :summary, :body, :image, :all_tags, :category_id)
-    end
+  def post_params
+    params.require(:post).permit(:user_id, :title, :summary, :body, :image, :all_tags, :category_id)
+  end
 
 end

@@ -13,6 +13,10 @@ ru:
       allpos: 'Все посты'
       newbtn: 'Новый пост'
       newbtnc: 'Новая категория'
+      editbtnc: 'Редактировать категорию'
+    post:
+      editctshow: 'редактировать'
+      deletectshow: 'удалить'
   shared:
     submenu:
       name: 'Все категории'

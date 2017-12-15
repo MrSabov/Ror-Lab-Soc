@@ -1,10 +1,22 @@
 Rails.application.routes.draw do
   scope"(:locale)", locale: /#{I18n.available_locales.join("|") }/ do
-    devise_for :users
+
+    # devise_for :users, controllers: {
+    #     sessions: 'users/sessions'
+    # }
+
+    devise_for :users, controllers: {
+        sessions: 'users/sessions'
+    }
       root 'posts#index'
-      resources :posts, only: [:show, :index]
+      resources :posts
       resources :tags, only: [:show]
       resources :categories, only: [:show]
+      resources :forums
+      resources :pages
+      resources :previews
+
+
 
     namespace :admin do
       resources :categories, except: [:show]
