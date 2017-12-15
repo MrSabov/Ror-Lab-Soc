@@ -10,13 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171204165449) do
+ActiveRecord::Schema.define(version: 20171211074748) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "ancestry"
+  end
+
+  create_table "forums", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.string "fimage"
+    t.string "image"
+  end
+
+  create_table "pages", force: :cascade do |t|
+    t.string "name"
+    t.string "surname"
+    t.string "nikname"
+    t.integer "age"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "avatar"
   end
 
   create_table "pictures", force: :cascade do |t|
@@ -33,7 +53,17 @@ ActiveRecord::Schema.define(version: 20171204165449) do
     t.datetime "updated_at", null: false
     t.string "image"
     t.integer "category_id"
+    t.integer "user_id"
     t.index ["category_id"], name: "index_posts_on_category_id"
+  end
+
+  create_table "previews", force: :cascade do |t|
+    t.string "title"
+    t.text "summary"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "image"
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -47,6 +77,15 @@ ActiveRecord::Schema.define(version: 20171204165449) do
 
   create_table "tags", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "userpgs", force: :cascade do |t|
+    t.string "name"
+    t.string "surname"
+    t.string "nikname"
+    t.integer "age"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -67,6 +106,15 @@ ActiveRecord::Schema.define(version: 20171204165449) do
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "userspgs", force: :cascade do |t|
+    t.string "name"
+    t.string "surname"
+    t.string "nikname"
+    t.integer "age"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
