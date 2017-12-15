@@ -38,11 +38,15 @@
 
   <nav class="navbar navbar-expand-lg navbar-width bg-dark ">
     <a class="navbar-brand" href="<%= root_path %>"><%= t('.logo') %></a>
+    <%= link_to 'Форум', forums_path, class: 'btn btn-outline-primary btn-sm' %>
+    |
+    <%= link_to 'Користувачі', pages_path, class: 'btn btn-outline-primary btn-sm' %>
+    |
+    <%= link_to 'Анонси', previews_path, class: 'btn btn-outline-primary btn-sm' %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" style="display:flex; justify-content: flex-end;" id="navbarNavAltMarkup">
-
 
       <ul class="navbar-nav">
         <% if user_signed_in? %>
@@ -57,11 +61,14 @@
               <%= link_to "Регистрация", new_user_registration_path, class: "nav-link" %>
             </li>
         <% end %>
-        <li class="nav-item <%= " active" if I18n.locale == :ru %>">
+        <li class="nav-item <%= " Active" if I18n.locale == :ru %>">
           <%= link_to "Рус", {locale: :ru}, class: "nav-link" %>
         </li>
         <li class="nav-item <%= " active" if I18n.locale == :en %>">
           <%= link_to "Ang", {locale: :en}, class: "nav-link" %>
+        </li>
+        <li class="nav-item <%= " active" if I18n.locale == :ua %>">
+          <%= link_to "Укр", {locale: :ua}, class: "nav-link" %>
         </li>
       </ul>
     </div>

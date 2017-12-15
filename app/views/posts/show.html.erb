@@ -1,3 +1,13 @@
+ <style>
+
+   img.img-show {
+     width: 600px;
+     height: 400px;
+   }
+
+ </style>
+
+
 <%= render 'shared/breadcrumb', category: @post.category %>
 
 <article class="post">
@@ -9,12 +19,12 @@
           |
           <%= link_to @post.category.name, @post.category %>
       <% end %>
-      <% if user_signed_in? && current_user.admin? %>
+      <% if user_signed_in? && (current_user != nil and current_user.id == @post.user_id  || current_user.admin?) %>
         |
-        <%= link_to 'Изменить', edit_admin_post_path(@post) %>
+        <%= link_to 'Изменить', edit_post_path(@post) %>
         |
-        <%= link_to 'Удалить', admin_post_path(@post), method: :delete, data: { confirm: 'Вы уверены?' } %>
-       <% end %>
+        <%= link_to 'Удалить', post_path(@post), method: :delete, data: { confirm: 'Вы уверены?' } %>
+      <% end %>
     </small>
   </section>
 
@@ -28,5 +38,6 @@
   </section>
 
 </article>
+
 
 <%= render 'disqus' %>

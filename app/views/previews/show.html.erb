@@ -1,0 +1,23 @@
+<style>
+  .show {
+    margin-bottom: 1em;
+    padding: 1em 0;
+    border-bottom: 1px solid lightgrey;
+  }
+
+  img.show {
+    width: 600px;
+    height: 400px;
+  }
+
+</style>
+
+
+<h1><%= @preview.title %></h1>
+<div class="row">
+<div class="show col-md-12">
+<%= @preview.body %>
+  <%= image_tag @preview.image.url(:large), class: 'show col-md-12' if @preview.image? %></div>
+</div>
+
+<%= render 'disqus' %>
