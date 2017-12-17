@@ -13,6 +13,7 @@
    	width: 550px;
    	height: 300px;
    	padding-top: 10px;
+      padding-bottom: 5px;
    }
 
    img.img-mavt {
@@ -23,9 +24,14 @@
    	float: left;
    }
 
+
    small.sml > p {
    	padding-top: 10px;
    	float: left;
+   }
+
+   div.abt {
+      padding-bottom: 15px;
    }
 
    div.creat {
@@ -43,28 +49,38 @@
    	margin: 10px 20px 0;
    }
 
+   .footer-summary > a {
+    background-color: orangered;
+    border-radius: 15%;
+    font-family: sans-serif;
+    font-weight: bold;
+    color: whitesmoke;
+    margin: 0 0 0 10px;
+   }
+
+
+  .footer-summary > a:hover {
+    background-color: blue;
+   }
 	
 </style>
 
 
 <div class="row col-md-row 12">
-
 	<div class="img-as col-md-row 4">
 		<%= image_tag @user.avatar.url(:avatar), class: 'img-as' if @user.avatar? %>	
 	</div>
 
-
 	<div class="info_block col-md-row 8">
 		<h2><%= full_name %></h2>
-		<p><%= @user.about %></p>
-		<p>Дата народження: <%= @user.birthday %></p>
+		<div class="adt"><%= @user.about %></div>
+		<div class="date"><p></p>Дата народження: <%= @user.birthday %></div>
 		<% if user_signed_in? && (current_user != nil and current_user.id == @user.id)  %>
-			<%= link_to 'Створити новий пост', new_post_path, class: 'btn btn-outline-primary btn-sm' %>
+			<div class="btnpos"><%= link_to 'Створити новий пост', new_post_path, class: 'btn btn-outline-primary btn-sm' %></div>
 			<%= link_to 'Редагувати профіль', edit_user_registration_path %>
 		<% end %>
 	</div>
-</div>
-	
+</div>	
 
 <%= @user_posts.each do |post| %>
 	<div class="card">
@@ -88,6 +104,10 @@
 			<%= post.body.html_safe %>
 			<div class="img-show">
 				<%= image_tag post.image.url(:large), class: 'img-show' if post.image? %>		
-			</div></h6>
-     </div>    
+			</div>
+           <div class="footer-summary">
+             <%= raw post.tags.map(&:name).map{ |t| link_to t, tag_path(t), class: 'tag tag-primary' }.join(' ') %>
+           </div>
+      </h6>
+   </div>    
 <% end %>

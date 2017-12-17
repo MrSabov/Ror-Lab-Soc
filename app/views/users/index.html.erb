@@ -31,7 +31,7 @@
     <div class="card">
       <div class="img-as">
         <%= image_tag user.avatar.url(:large), class: 'img-as' if user.avatar? %>
-        <p><%= user.first_name %>  <%= user.last_name %> | <%= link_to user.username, user_path(user) %></p>
-      </div>
-    </div>
+         <p><%= user.first_name %>  <%= user.last_name %> | <%= link_to user.username, user_path(user) %></p>  
+      </div> 
+    </div>    
 <% end %>

@@ -30,6 +30,9 @@
         <%= link_to 'edit', edit_forum_path(forum.id) %>
         |
         <%= link_to 'delete', forum_path(forum.id), method: :delete, data: {confirm: 'Вы уверены что хотите удалить пост?'} %>
+    <% else user_signed_in? && (current_user != nil and current_user.id == forum.user_id  || current_user.moderator?) %>
+    |
+      <%= link_to 'edit', edit_forum_path(forum.id) %>       
     <% end %>
   </small>
   <h3 class="card-header">

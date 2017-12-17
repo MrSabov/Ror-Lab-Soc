@@ -28,6 +28,9 @@
         <%= link_to t('.editctshow'), edit_post_path(post) %>
         |
         <%= link_to t('.deletectshow'), post_path(post), method: :delete, data: {confirm: 'Ви впевнені?'} %>
+      <% else user_signed_in? && (current_user != nil and current_user.id == post.user_id  || current_user.moderator?) %>
+        |
+        <%= link_to t('.editctshow'), edit_post_path(post) %>  
       <% end %>
     </small>
   </section>
