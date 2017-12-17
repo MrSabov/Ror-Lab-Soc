@@ -5,6 +5,15 @@
      height: 400px;
    }
 
+
+  img.img-as {
+      height: 36px;
+      width: 36px;
+      margin: 10px 10px 5px 10px;
+      border-radius: 50%;
+      float: left;
+     }
+
  </style>
 
 
@@ -14,6 +23,10 @@
   <section class="post-head">
     <h1><%= @post.title %></h1>
     <small>
+      <div class="img-as">
+      <%= image_tag @post.user.avatar.url(:large), class: 'img-as' if @post.user.avatar? %>  
+      </div>
+      <p>Created by: <%= @post.user.username  %></p>
       <time><%= @post.created_at.to_date.strftime("%d %B, %Y") %></time>
       <% if @post.category.present? %>
           |

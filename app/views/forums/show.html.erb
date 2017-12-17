@@ -10,11 +10,26 @@
   img.show {
     width: 600px;
     height: 400px;
+
   }
+
+  img.img-as {
+      height: 36px;
+      width: 36px;
+      margin: 10px 10px 5px 10px;
+      border-radius: 50%;
+      float: left;
+     }
+
+
 
 </style>
 
 <small class="sml">
+  <div class="img-as">
+      <%= image_tag @forum.user.avatar.url(:large), class: 'img-as' if @forum.user.avatar? %>  
+    </div>
+    <p>Created by: <%= @forum.user.username  %></p>
   <time><%= @forum.created_at.to_date.strftime("%d %B, %Y") %></time>
   <% if user_signed_in? && (current_user != nil and current_user.id == @forum.user_id  || current_user.admin?) %>
     <%= link_to 'Изменить', edit_forum_path(@forum) %>

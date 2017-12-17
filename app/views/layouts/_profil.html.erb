@@ -1,0 +1,13 @@
+<% @pages.each do |page| %>
+    <div class="card">
+      <div class="img-as">
+        <%= image_tag page.avatar.url(:large), class: 'img-as' if page.avatar? %>
+        <p><%= page.name %>  <%= page.surname %> | <%= link_to page.nikname, page_path(page) %>
+         <!--  <div class="posit">
+            <3%= link_to 'edit', edit_page_path(page), class: 'btn btn-outline-primary btn-sm' %>
+            
+            <3%= link_to 'delete', page_path(page), method: :delete, data: {comfirm: 'You sure??'}, class: 'btn btn-danger btn-sm' %>
+          </div> -->
+        </p>
+      </div>
+    </div>
