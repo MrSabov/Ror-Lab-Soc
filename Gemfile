@@ -42,6 +42,8 @@ gem 'ancestry'
 
 gem 'devise'
 
+gem 'rails_admin', '~> 1.2'
+
 group :production do
   gem 'pg'
 end

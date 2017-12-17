@@ -16,7 +16,7 @@ module RORproj
     # -- all .rb files in that directory are automatically loaded.
 
     config.i18n.available_locales = [:ru, :en, :ua]
-    config.i18n.default_locale = :en
+    config.i18n.default_locale = :ua
 
   end
 end
