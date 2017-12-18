@@ -17,7 +17,7 @@ sendFile = (attachment) ->
   form.append 'Content-Type', file.type
   form.append 'picture[image]', file
   xhr = new XMLHttpRequest
-  xhr.open 'POST', '/admin/pictures', true
+  xhr.open 'POST', '/admin/pictures/', true
 
   xhr.upload.onprogress = (event) ->
     progress = undefined

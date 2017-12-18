@@ -1,0 +1,49 @@
+<style>
+
+  .card {
+    margin: 8px 0 8px 0;
+  }
+    .img-show {
+      float: right;
+    }
+
+    img.img-show {
+      width: 150px;
+      height: 100px;
+    }
+
+</style>
+
+
+<h1>Forum</h1>
+
+<% if user_signed_in? %>
+    <%= link_to 'Создать обсуждение', new_forum_path, class: 'btn btn-outline-primary btn-sm' %>
+<% end %>
+
+
+<% @forums.each do |forum| %>
+<div class="card">
+  <small class="sml">
+    <time><%= forum.created_at.to_date.strftime("%d %B, %Y") %></time>
+    <% if user_signed_in? && (current_user != nil and current_user.id == forum.user_id  || current_user.admin?) %>
+        <%= link_to 'edit', edit_forum_path(forum.id) %>
+        |
+        <%= link_to 'delete', forum_path(forum.id), method: :delete, data: {confirm: 'Вы уверены что хотите удалить пост?'} %>
+    <% else user_signed_in? && (current_user != nil and current_user.id == forum.user_id  || current_user.moderator?) %>
+    |
+      <%= link_to 'edit', edit_forum_path(forum.id) %>       
+    <% end %>
+  </small>
+  <h3 class="card-header">
+    <div class="img-show">
+    <%= image_tag forum.image.url(:thumb), class: 'img-show' if forum.image? %></div>
+    <%= link_to forum.title, forum_path(forum) %></h3>
+     </div>
+<% end %>
+
+
+
+
+
+

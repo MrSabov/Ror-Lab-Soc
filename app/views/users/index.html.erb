@@ -1,0 +1,37 @@
+<style>
+
+   .card {
+     margin: 8px 0 8px 0;
+   }
+
+   img.img-as {
+     width: 46px;
+     height: 46px;
+     border-radius: 50%;
+   }
+     
+     .img-as {
+       float: left;
+       padding: 5px 6px 3px 5px;
+     }
+
+       .img-as > p {
+         padding-top: 10px;
+       }
+
+
+
+
+ </style>
+
+
+<h2> Всі користувачі </h2>
+
+<% @users.each do |user| %>
+    <div class="card">
+      <div class="img-as">
+        <%= image_tag user.avatar.url(:large), class: 'img-as' if user.avatar? %>
+         <p><%= user.first_name %>  <%= user.last_name %> | <%= link_to user.username, user_path(user) %></p>  
+      </div> 
+    </div>    
+<% end %>

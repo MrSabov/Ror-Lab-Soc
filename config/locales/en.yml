@@ -44,6 +44,10 @@ en:
       allpos: 'All posts'
       newbtn: 'New post'
       newbtnc: 'New category'
+      editbtnc: 'Edit category'
+    post:
+      editctshow: 'edit'
+      deletectshow: 'delete'
   shared:
     submenu:
       name: 'All Categories'

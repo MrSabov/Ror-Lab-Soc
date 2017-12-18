@@ -1,0 +1,113 @@
+<style>
+
+   img.img-as {
+   	width: 180px;
+   	height: 190px;
+   	padding-right: 15px;
+   	padding-top: 10px;
+   	margin-bottom: 10px;
+   	background-color: width;
+   }
+
+   img.img-show {
+   	width: 550px;
+   	height: 300px;
+   	padding-top: 10px;
+      padding-bottom: 5px;
+   }
+
+   img.img-mavt {
+   	height: 36px;
+   	width: 36px;
+   	margin: 10px 10px 5px 10px;
+   	border-radius: 50%;
+   	float: left;
+   }
+
+
+   small.sml > p {
+   	padding-top: 10px;
+   	float: left;
+   }
+
+   div.abt {
+      padding-bottom: 15px;
+   }
+
+   div.creat {
+   	 padding: 30px 10px 5px 0;
+   	 float: right;
+   }
+
+   .row.col-md-row 	 {
+   	border-bottom: 1px solid lightgrey;
+   	padding-bottom: 10px;
+   	margin-bottom: 15px;
+   }
+
+   div.card {
+   	margin: 10px 20px 15px 0;
+   }
+
+   .footer-summary > a {
+    background-color: orangered;
+    border-radius: 15%;
+    font-family: sans-serif;
+    font-weight: bold;
+    color: whitesmoke;
+    margin: 0 0 0 10px;
+   }
+
+
+  .footer-summary > a:hover {
+    background-color: blue;
+   }
+	
+</style>
+
+
+<div class="row col-md-row 12">
+	<div class="img-as col-md-row 4">
+		<%= image_tag @user.avatar.url(:avatar), class: 'img-as' if @user.avatar? %>	
+	</div>
+
+	<div class="info_block col-md-row 8">
+		<h2><%= full_name %></h2>
+		<div class="adt"><%= @user.about %></div>
+		<div class="date"><p></p>Дата народження: <%= @user.birthday %></div>
+		<% if user_signed_in? && (current_user != nil and current_user.id == @user.id)  %>
+			<div class="btnpos"><%= link_to 'Створити новий пост', new_post_path, class: 'btn btn-outline-primary btn-sm' %></div>
+			<%= link_to 'Редагувати профіль', edit_user_registration_path %>
+		<% end %>
+	</div>
+</div>	
+
+<% @user_posts.each do |post| %>
+	<div class="card">
+		<small class="sml">
+			<%= image_tag @user.avatar.url(:large), class: 'img-mavt' if @user.avatar? %>
+			<p><%= full_name %></p>
+			<div class="creat">
+				<time>Створенний: <%= post.created_at.to_date.strftime("%d %B, %Y") %></time>
+				 <% if post.category.present? %>
+        			<%= link_to post.category.name, post.category %>
+      			<% end %>
+      				|
+				<% if user_signed_in? && (current_user != nil and current_user.id == post.user_id  || current_user.admin?) %>
+		    		<%= link_to 'редагувати', edit_post_path(post.id) %>
+		   		 	|
+		    		<%= link_to 'видалити', post_path(post.id), method: :delete, data: {confirm: 'Ви впевнені що хочете видалити пост?'} %>
+				<% end %>
+			</div>
+		</small>
+		<h6 class="card-header">
+			<%= post.body.html_safe %>
+			<div class="img-show">
+				<%= image_tag post.image.url(:large), class: 'img-show' if post.image? %>		
+			</div>
+           <div class="footer-summary">
+             <%= raw post.tags.map(&:name).map{ |t| link_to t, tag_path(t), class: 'tag tag-primary' }.join(' ') %>
+           </div>
+      </h6>
+   </div>    
+<% end %>
