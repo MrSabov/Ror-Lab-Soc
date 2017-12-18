@@ -46,7 +46,7 @@
    }
 
    div.card {
-   	margin: 10px 20px 0;
+   	margin: 10px 20px 15px 0;
    }
 
    .footer-summary > a {
@@ -82,7 +82,7 @@
 	</div>
 </div>	
 
-<%= @user_posts.each do |post| %>
+<% @user_posts.each do |post| %>
 	<div class="card">
 		<small class="sml">
 			<%= image_tag @user.avatar.url(:large), class: 'img-mavt' if @user.avatar? %>
